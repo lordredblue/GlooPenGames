@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="title.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lila - Morning*</title>
+  </head>
+  <body>
+    <div class = "pic_no_text">
+      <img src="2.jpg" alt="Purple-haired woman glancing in the mirror." width = "600">
+    </div>
+    <div class = "actions">
+      <a href = "wait.html" id = "n1" onclick="setBlock('1')">I cannot handle to do anything unnecessary today.</a>
+      <a href = "wait.html" id = "p1" onclick="setBlock('2')">Maybe I need to take a short walk.</a>
+      <a href = "wait.html" id = "neu1" onclick="setBlock('3')"> I should make myself a cup of tea. </a>
+    </div>
+    <script src="../script.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var socket = io();
+
+    function setBlock(i) {
+      socket.emit('setBlock', "0," + i);
+    }
+    </script>
+  </body>
+</html>

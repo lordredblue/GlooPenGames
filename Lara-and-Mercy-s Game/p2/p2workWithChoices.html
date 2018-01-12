@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="title.css">
+    <title>Lila - Work*</title>
+  </head>
+  <body id = "panic">
+    <audio autoplay = "true">
+      <source src="Busy Cafe Ambient Noise - 3 minutes.mp3" type="audio/mpeg" autoplay = "true">
+          Your browser does not support the audio element.
+      </audio>
+
+    <p id = "escape">I NEED TO GET AWAY</p>
+    <!--could be a link-->
+    <p id = "calmText"></p>
+    <div class = "pic">
+      <img id = "hid" src="sadBoss.jpg" alt = "A sad boss" width = "600">
+    </div>
+    <div class = "actions">
+    <button id = "calmDown" onclick = "toggleCalmDown()">Continue</button>
+    <div id = "options">
+      <a href = "wait.html" id = "p2" onclick="setBlock('1')">I cannot do this anymore.</a>
+      <a href = "wait.html" id = "n2" onclick="setBlock('2')">I will be fine. I'll get back to work in a second.</a>
+      <a href = "wait.html" id = "neu2" onclick="setBlock('3')"> I think I need the day off.</a>
+    </div>
+    </div>
+    <script src="../script.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var socket = io();
+
+    function setBlock(i) {
+      socket.emit('setBlock', "1," + i);
+    }
+    </script>
+  </body>
+</html>

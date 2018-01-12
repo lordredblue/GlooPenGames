@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="title.css">
+    <title>Some Time Later...</title>
+  </head>
+  <body onload="end()">
+    <p>It's been a rough past couple of days...</p>
+    <div id = "next"></div>
+    <script src="../script.js"></script>
+    <script>
+    function end(){
+    var d = document.getElementById("next");
+    var p = document.createElement('a');
+    p.href = 'wait.html';
+    p.innerHTML = "Next";
+    d.appendChild(p);
+    }
+    </script>
+  </body>
+</html>

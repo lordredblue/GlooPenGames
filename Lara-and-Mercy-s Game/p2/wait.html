@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="title.css">
+    <title>Waiting for Lila...</title>
+  </head>
+  <body onload="hideAll()">
+    <p>Waiting for Lila to make a decision...</p>
+    <a href = "p2work.html" id = "work">Next</a>
+    <a href = "p2morning1a.html" id = "morning1a">Next</a>
+    <a href = "p2morning2.html" id = "morning2">Next</a>
+
+    <a href = "p2work1a.html" id = "work1a">Next</a>
+    <a href = "p2work2a.html" id = "work2a">Next</a>
+    <a href = "p2work3a.html" id = "work3a">Next</a>
+
+    <a href = "p2party1a.html" id = "party1a">Next</a>
+    <a href = "p2party2.html" id = "party2">Next</a>
+    <a href = "p2party3.html" id = "party3">Next</a>
+
+    <a href = "p2end1.html" id = "end1">Next</a>
+    <a href = "p2end2.html" id = "end2">Next</a>
+
+    <script src="../script.js"></script>
+     <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var socket = io();
+    function hideAll() {
+      document.getElementById("work").style.display = "none";
+      document.getElementById("morning1a").style.display = "none";
+      document.getElementById("morning2").style.display = "none";
+      document.getElementById("work1a").style.display = "none";
+      document.getElementById("work2a").style.display = "none";
+      document.getElementById("work3a").style.display = "none";
+      document.getElementById("party1a").style.display = "none";
+      document.getElementById("party2").style.display = "none";
+      document.getElementById("party3").style.display = "none";
+      document.getElementById("end1").style.display = "none";
+      document.getElementById("end2").style.display = "none";
+    }
+    socket.on('server output', function(msg){
+      console.log("lila chose: " + msg);
+      document.getElementById(msg).style.display = "initial";
+    });
+    </script>
+  </body>
+</html>

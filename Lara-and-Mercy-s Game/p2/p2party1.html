@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="title.css">
+    <title>Lila - The Party*</title>
+  </head>
+  <body>
+    <audio autoplay = "true">
+      <source src="Party 2 ⁄ People Talking and Music - Sound Effect.mp3" type="audio/mpeg" autoplay = "true">
+          Your browser does not support the audio element.
+  </audio>
+    <div class = "pic_no_text">
+      <img src = "friends.jpg" alt = "A group of friends" width = "600">
+    </div>
+    <div class = "actions">
+      <a href = "wait.html" id = "p3" onclick="setBlock('1')">I could try...</a>
+      <a href = "wait.html" id = "n3" onclick="setBlock('2')">Something will go wrong if I do.</a>
+      <a href = "wait.html" id = "neu3" onclick="setBlock('3')">I should just stay by my friend's side.</a>
+    </div>
+    <script src="../script.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var socket = io();
+
+    function setBlock(i) {
+      socket.emit('setBlock', "2," + i);
+    }
+    </script>
+  </body>
+</html>
