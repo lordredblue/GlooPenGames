@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="title.css">
+    <title>Lila - Morning</title>
+  </head>
+  <body onload = "playerChoice()">
+    <div class = "pic_no_text">
+      <img src="teacup.jpg" alt="A teacup." width = "600">
+    </div>
+
+    <p>At least I could calm myself down.</p>
+    <div class = "actions">
+      <a href = "work.html">Next.</a>
+    </div>
+    <script src="script.js"></script>
+       <script src="/socket.io/socket.io.js"></script>
+    <script> 
+    var socket = io();
+    
+    function playerChoice() {
+      socket.emit('user input', "morning2");
+    }
+
+    socket.on('server output', function(msg){
+      console.log("server output: " + msg);
+    });
+    </script>
+  </body>
+</html>

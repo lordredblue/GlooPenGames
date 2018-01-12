@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="title.css">
+    <title>Lila - The End</title>
+  </head>
+  <body onload = "playerChoice()">
+    <audio autoplay = "true">
+      <source src="Emotional Sad Piano Music  Touch  (Download and Royalty FREE).mp3" type="audio/mpeg" autoplay = "true">
+          Your browser does not support the audio element.
+      </audio>
+    <div class = "pic">
+      <img src = "sad.jpg">
+    </div>
+    <div class = "text">
+    <p class = "diary">12/04/2016<br>
+Things have been going downhill lately. Every day it is harder and harder to do things for myself. Or at all.<br>
+I feel scared of things that don’t really matter to me. I don’t know how to face daily activities anymore.<br>
+Maybe I should just give up altogether.<br>
+-  Lila
+</p>
+  </div>
+    <script src="script.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script> 
+    var socket = io();
+    
+    function playerChoice() {
+      socket.emit('user input', "end2");
+    }
+
+    socket.on('server output', function(msg){
+      console.log("server output: " + msg);
+    });
+    </script>
+  </body>
+</html>

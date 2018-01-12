@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="title.css">
+    <title>Lila - Work</title>
+  </head>
+  <body onload = "playerChoice()">
+    <audio autoplay = "true">
+      <source src="Busy Cafe Ambient Noise - 3 minutes.mp3" type="audio/mpeg" autoplay = "true">
+          Your browser does not support the audio element.
+      </audio>
+    <div class = "pic_no_text">
+      <img src="sadBoss.jpg" alt = "A sad boss" width = "600">
+    </div>
+    <div class = "actions">
+      <button onclick = "toggleText2()" class = "boss">You don’t need to push yourself, you know? It’s fine if this is something you can’t deal with right now.</button>
+      <p id = "lies"></p>
+    </div>
+    <script src="script.js"></script>
+     <script src="/socket.io/socket.io.js"></script>
+    <script> 
+    var socket = io();
+    
+    function playerChoice() {
+      socket.emit('user input', "work2a");
+    }
+
+    socket.on('server output', function(msg){
+      console.log("server output: " + msg);
+    });
+    </script>
+  </body>
+</html>

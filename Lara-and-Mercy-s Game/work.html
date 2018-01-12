@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="title.css">
+    <title>Lila - Work</title>
+  </head>
+  <body onload = "playerChoice()">
+    <audio autoplay = "true">
+      <source src="Busy Cafe Ambient Noise - 3 minutes.mp3" type="audio/mpeg" autoplay = "true">
+          Your browser does not support the audio element.
+      </audio>
+    <div class = "pic">
+      <img src="bar.jpg" id = "warp">
+    </div>
+
+    <div class = "text">
+    <p>Tonight the restaurant has been busier than usual.
+      It’s always hard for me to breathe while being here, but there’s a special uneasiness about the atmosphere today.<br>
+      Something has to go wrong.
+    </p>
+  </div>
+    <div class = "actions">
+    <button id = "rudeConvo" onclick = "toggleRudeConvo()">click to continue</button>
+  </div>
+    <p id = "freakOut"></p>
+
+    <script src="script.js"></script>
+    <!--<script>secondChoice()</script>-->
+    <script src="/socket.io/socket.io.js"></script>
+    <script> 
+    var socket = io();
+    
+    function playerChoice() {
+      socket.emit('user input', "work");
+    }
+
+    socket.on('server output', function(msg){
+      console.log("server output: " + msg);
+    });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="title.css">
+    <title>Lila - The Party</title>
+  </head>
+  <body onload = "playerChoice()">
+    <audio autoplay = "true">
+      <source src="Party 2 ⁄ People Talking and Music - Sound Effect.mp3" type="audio/mpeg" autoplay = "true">
+          Your browser does not support the audio element.
+    </audio>
+    <div class = "pic">
+      <img src = "sunshine.jpg">
+    </div>
+    <div class = "text">
+      <p>Although I did enjoy spending time with her, I barely got to. It makes sense, the host of a party needs to be around everyone, not just me...</p>
+    </div>
+    <div class = "actions">
+      <a href = "beforeEnd.html">Next</a>
+    </div>
+    <script src="script.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script> 
+    var socket = io();
+    
+    function playerChoice() {
+      socket.emit('user input', "party3");
+    }
+
+    socket.on('server output', function(msg){
+      console.log("server output: " + msg);
+    });
+    </script>
+  </body>
+</html>

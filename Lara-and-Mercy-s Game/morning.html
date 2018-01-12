@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="title.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lila - Morning*</title>
+  </head>
+  <body onload = "hideAll()">
+    <div class = "pic_no_text">
+      <img src="2.jpg" alt="Purple-haired woman glancing in the mirror." width = "600">
+    </div>
+    <div class = "actions">
+      <a href = "work.html" id = "n1">I cannot handle to do anything unnecessary today.</a>
+      <a href = "morning1a.html" id = "p1">Maybe I need to take a short walk.</a>
+      <a href = "morning2.html" id = "neu1"> I should make myself a cup of tea. </a>
+    </div>
+    <script src="script.js"></script>
+    <script>firstChoice()</script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var socket = io();
+
+    function hideAll(){
+      document.getElementById("n1").style.display = "none";
+      document.getElementById("p1").style.display = "none";
+      document.getElementById("neu1").style.display = "none";
+      getBlock();
+    }
+
+    function getBlock() {
+      socket.emit('getBlock', "0");
+    }
+
+    socket.on('block', function(msg){
+      console.log("blocked: " + msg);
+      if(msg == "1"){
+        document.getElementById("n1").style.display = "none";
+        document.getElementById("p1").style.display = "initial";
+        document.getElementById("neu1").style.display = "initial";
+      }
+      if(msg == "2"){
+        document.getElementById("n1").style.display = "initial";
+        document.getElementById("p1").style.display = "none";
+        document.getElementById("neu1").style.display = "initial";
+      }
+      if(msg == "3"){
+        document.getElementById("n1").style.display = "initial";
+        document.getElementById("p1").style.display = "initial";
+        document.getElementById("neu1").style.display = "none";
+      }
+
+    });
+    </script>
+  </body>
+</html>

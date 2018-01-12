@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="title.css">
+    <title>Lila - After Work</title>
+  </head>
+  <body onload = "playerChoice()">
+    <div class = "pic_no_text">
+      <img src="city.jpg" alt="A city in the fall." width = "600">
+    </div>
+
+    <p>The faint feeling of a panic attack remains in me. I can’t seem to shake it off completely.</p>
+    <div class = "actions">
+      <a href = "party.html">Next.</a>
+    </div>
+    <script src="script.js"></script>
+     <script src="/socket.io/socket.io.js"></script>
+    <script> 
+    var socket = io();
+    
+    function playerChoice() {
+      socket.emit('user input', "work3a");
+    }
+
+    socket.on('server output', function(msg){
+      console.log("server output: " + msg);
+    });
+    </script>
+  </body>
+</html>

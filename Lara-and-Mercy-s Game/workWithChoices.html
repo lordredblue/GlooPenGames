@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="title.css">
+    <title>Lila - Work*</title>
+  </head>
+  <body id = "panic" onload = "hideAll()">
+    <audio autoplay = "true">
+      <source src="Busy Cafe Ambient Noise - 3 minutes.mp3" type="audio/mpeg" autoplay = "true">
+          Your browser does not support the audio element.
+      </audio>
+
+    <p id = "escape">I NEED TO GET AWAY</p>
+    <!--could be a link-->
+    <p id = "calmText"></p>
+    <div class = "pic">
+      <img id = "hid" src="sadBoss.jpg" alt = "A sad boss" width = "600">
+    </div>
+    <div class = "actions">
+    <button id = "calmDown" onclick = "toggleCalmDown()">Continue</button>
+    <div id = "options">
+      <a href = "work1a.html" id = "p2">I cannot do this anymore.</a>
+      <a href = "work2a.html" id = "n2">I will be fine. I'll get back to work in a second.</a>
+      <a href = "work3a.html" id = "neu2"> I think I need the day off.</a>
+    </div>
+    </div>
+    <script src="script.js"></script>
+    <script>secondChoice()</script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var socket = io();
+
+    function hideAll(){
+      document.getElementById("p2").style.display = "none";
+      document.getElementById("n2").style.display = "none";
+      document.getElementById("neu2").style.display = "none";
+      getBlock();
+    }
+
+    function getBlock() {
+      socket.emit('getBlock', "1");
+    }
+
+   socket.on('block', function(msg){
+      console.log("blocked: " + msg);
+      if(msg == "1"){
+        document.getElementById("p2").style.display = "none";
+        document.getElementById("n2").style.display = "initial";
+        document.getElementById("neu2").style.display = "initial";
+      }
+      if(msg == "2"){
+        document.getElementById("p2").style.display = "initial";
+        document.getElementById("n2").style.display = "none";
+        document.getElementById("neu2").style.display = "initial";
+      }
+      if(msg == "3"){
+        document.getElementById("p2").style.display = "initial";
+        document.getElementById("n2").style.display = "initial";
+        document.getElementById("neu2").style.display = "none";
+      }
+
+    });
+    </script>
+  </body>
+</html>

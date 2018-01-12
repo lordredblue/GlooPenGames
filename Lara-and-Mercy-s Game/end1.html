@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="title.css">
+    <title>Lila - The End</title>
+  </head>
+  <body onload = "playerChoice()">
+    <audio autoplay = "true">
+      <source src="Royalty free music - A New Morning  NO COPYRIGHT MUSIC  Happy Background Music.mp3" type="audio/mpeg" autoplay = "true">
+          Your browser does not support the audio element.
+      </audio>
+    <div class = "pic">
+      <img src = "happy.jpg">
+    </div>
+    <div class = "text">
+    <p class = "diary">12/04/2016<br>I have gotten into the habits of doing more things for myself. Even the smallest things seem to make a difference on the way I face my everyday life. I did not know caring for myself could end up helping this much.<br>
+I finally decided to face something that I should have faced a while ago. I was right all along, and I am starting treatment tomorrow morning. It feels weird to write it out, but here it goes, with full honesty: General Anxiety Disorder. It’s not who I am, but it’s a part of me I need to accept. It’s a part of me that needs an extra help, and that is OK.<br>-  Lila
+    </p>
+    </div>
+    <script src="script.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script> 
+    var socket = io();
+    
+    function playerChoice() {
+      socket.emit('user input', "end1");
+    }
+
+    socket.on('server output', function(msg){
+      console.log("server output: " + msg);
+    });
+    </script>
+  </body>
+</html>
